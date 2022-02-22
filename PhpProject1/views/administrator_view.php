@@ -5,7 +5,7 @@
     </head>
     <body>
         <h1>OVO VIDI ADMIN</h1>
-        <table>
+        <table class="center">
             <tr>
                 <th>
                     Ime

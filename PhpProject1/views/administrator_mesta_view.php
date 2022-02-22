@@ -2,7 +2,7 @@
 <?php
 // put your code here
 ?>
-<table>
+<table class="center">
     <form name='forma_mikrolokacije'method="post" action="" onsubmit="return provera_mikrolokacije()">
     <tr>
         <th>
@@ -48,7 +48,7 @@
     
     
     
-    <table>
+    <table class="center">
     <form name='forma_ulica'method="post" action="" onsubmit="return provera_ulice()">
     <tr>
         <th>

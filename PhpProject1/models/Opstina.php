@@ -1,16 +1,10 @@
 <?php
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
 
-/**
- * Description of Opstina
- *
- * @author Jarvis
- */
 class Opstina_model{
+    /*
+     * Klasa Opstina_model povezuje se sa tabelom opstina iz baze podataka nekretnine
+     */
     private $id_opstina;
     private $id_grad;
     private $naziv_o;
@@ -23,6 +17,11 @@ class Opstina_model{
         return $this->$ime_atributa;
  }
     public static function dohvati_opstine($naziv_grada) {
+        /*
+         * Vraca niz objekata Opstina_model sa popunjenim vrednostima iz tabele
+         * opstina gde je naziv grada kao istoimeni prosledjeni argument, u slucaju greske ili nepostojanja
+         * vraca false
+         */
         $konekcija=DB::dohvati_instancu();
         $upit="SELECT * FROM grad,opstina WHERE naziv_g='$naziv_grada'";
         $rezultat=$konekcija->query($upit);
@@ -37,6 +36,11 @@ class Opstina_model{
             return $niz;
     }
     public static function dohvati_opstinu($naziv_grada,$naziv_opstine) {
+        /*
+         * Vraca objekat opstina_model sa popunjenim vrednostima iz tabele opstina
+         * gde su naziv grada i opstine istoimeni prosledjeni argumenti, u slucaju greske ili nepostojanja
+         * vraca false
+         */
     $konekcija=DB::dohvati_instancu();
     $upit="SELECT * FROM grad, opstina WHERE naziv_g='$naziv_grada' and naziv_o='$naziv_opstine'";
     echo $upit;
@@ -50,6 +54,11 @@ class Opstina_model{
         return FALSE;
     }
     public static function dohvati_id_opstine($naziv_grada,$naziv_opstine){
+        /*
+         * Vraca id opstine iz tabele opstina gde je naziv grada i opstine 
+         * kao istoimeni prosledjeni argumenti, u slucaju greske ili nepostojanja
+         * vraca false
+         */
         $konekcija=DB::dohvati_instancu();
         $upit="SELECT id_opstina FROM grad,opstina WHERE naziv_g='$naziv_grada'and naziv_o='$naziv_opstine'";
         $rezultat=$konekcija->query($upit);

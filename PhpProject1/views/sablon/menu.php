@@ -1,5 +1,6 @@
 <body>
-    <input type="button" value="Pocetna " onclick="location.href='<?php echo$_SERVER['PHP_SELF'].'?controller='.$_SESSION['korisnik']->tip.'&akcija=index'?>'">
+    <div class="center">
+    <input  type="button" value="Pocetna " onclick="location.href='<?php echo$_SERVER['PHP_SELF'].'?controller='.$_SESSION['korisnik']->tip.'&akcija=index'?>'">
     <input type="button" value="Odjava" onclick="location.href='<?php echo$_SERVER['PHP_SELF'].'?controller='.$_SESSION['korisnik']->tip.'&akcija=logout'?>'">
     <?php if($_GET['akcija']!='promena_lozinke'):?>
     <input type="button" value="Promena lozinke" onclick="location.href='<?php echo$_SERVER['PHP_SELF'].'?controller='.$_SESSION['korisnik']->tip.'&akcija=promena_lozinke'?>'">
@@ -26,6 +27,15 @@
         <input type="button" value="Izmeni podatke" onclick="location.href='<?php echo$_SERVER['PHP_SELF'].'?controller='.$_SESSION['korisnik']->tip.'&akcija=izmeni_podatke'?>'">
         <?php endif?>
     <?php endif?>
+    <?php if($_GET['controller']=='kupac'):?>
+        <?php if($_GET['akcija']!='napredna_pretraga'):?>
+        <input type="button" value="Napredna pretraga" onclick="location.href='<?php echo$_SERVER['PHP_SELF'].'?controller='.$_SESSION['korisnik']->tip.'&akcija=napredna_pretraga'?>'">
+        <?php endif?>
+        <?php if($_GET['akcija']!='omiljeni'):?>
+        <input type="button" value="Omiljeni" onclick="location.href='<?php echo$_SERVER['PHP_SELF'].'?controller='.$_SESSION['korisnik']->tip.'&akcija=omiljeni'?>'">
+        <?php endif?>
+    <?php endif?>
+    </div>
     <hr>
 </body>
 <?php

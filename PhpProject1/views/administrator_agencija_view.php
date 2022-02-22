@@ -1,5 +1,5 @@
 <form name='forma_agencija'method="post" action="<?php $_SERVER['PHP_SELF']?>?controller=<?php if(isset($_SESSION['korisnik'])) echo $_SESSION['korisnik']->tip;else 'gost'?>&akcija=dodaj_agenciju" onsubmit='return provera_agencije();'>
-    <table>
+    <table class="center">
         <tr>
             <td>
                 Naziv

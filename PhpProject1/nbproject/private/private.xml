@@ -4,41 +4,58 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/kupac_view.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/views/pocetna.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/models/ModelAutor.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/kupac_napredna_pretraga_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/kupac_pretraga_view.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/controllers/oglasavac_controller.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/models/Opstina.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/provera3.js</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/routes.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/administrator_pretraga_rezultat_view.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/provera.js</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/models/Mikrolokacija.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/views/administrator_agencija_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera7.js</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/oglasavac_view.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/models/Nekretnina.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/index.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/models/Grad.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/models/Ulica.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/administrator_mesta_view.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/controllers/gost_controller.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/views/sablon/header_kupac.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera10.js</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/sablon/header.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/views/promena_lozinke.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/views/administrator_pretraga_view.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/models/Korisnik.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/views/sablon/header_gost.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/controllers/kupac_controller.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/registracija.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/sablon/menu.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera8.js</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera4.js</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/najnovije.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/login.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/oglasavac_nekretnina_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/controllers/administrator_controller.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/kupac_pregled_nekretnine_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera11.js</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/pocetna.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/models/ModelAutor.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/oglasavac_izmeni_podatke_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera9.js</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera.js</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/nbproject/private/private.xml</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera5.js</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/models/Omiljene.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/models/Mikrolokacija.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/administrator_agencija_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/models/Nekretnina.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/sablon/header_kupac.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/kupac_omiljeni_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/provera6.js</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/oglasavac_izmeni_nekretnina_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/promena_lozinke.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/administrator_pretraga_view.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/views/sablon/header_gost.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject1/controllers/kupac_controller.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/update.js</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/provera2.js</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/models/Agencija.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/views/login.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/sablon/footer.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/administrator_view.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/views/oglasavac_nekretnina_view.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject1/views/greska.php</file>
-            <file>file:/C:/xampp/htdocs/PhpProject1/controllers/administrator_controller.php</file>
         </group>
     </open-files>
 </project-private>

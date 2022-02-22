@@ -1,4 +1,4 @@
-<table>
+<table class="center">
     <tr>
         <th>
             Ime
@@ -46,7 +46,7 @@
                 <input type='text' name='korisnicko_ime' value="<?php echo $korisnik->korisnicko_ime ?>">
             </td>
             <td>
-                <input type='text' name='lozinka' value="<?php echo $korisnik->lozinka ?>">
+                <input type='text' name='lozinka'>
             </td>
             <td>
                     <select name='grad' id="grad">
@@ -95,11 +95,11 @@
             </td>
             <td>
                 
+        <input type='submit' name='dugme_izmeni' value='Izmeni'>
             </td>
             <td>
                 
                 <input type="hidden" name='staro_korisnicko_ime' value="<?php echo $korisnik->korisnicko_ime?>">
-        <input type='submit' name='dugme_izmeni' value='Izmeni'>
             </td>
             <td>
             <input type='submit' name='dugme_izbrisi' value='Izbrisi'>

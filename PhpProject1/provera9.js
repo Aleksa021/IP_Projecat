@@ -174,7 +174,7 @@ function provera_izmene_korisnika(){
     var korisnicko_ime = document.forma_izmeni.korisnicko_ime.value;
     var kor_reg=/^[A-Za-z0-9_]{6,}$/;
     var lozinka = document.forma_izmeni.lozinka.value;
-    var loz_reg=/^(?(=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,})|()$/;
+    var loz_reg=/^((?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,})|()$/;
     //var loz_reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])([A-Za-z]{1,})([A-Za-z\d@$!%*?&]{7,})$/;
     var grad= document.getElementById("grad").value;
     if(grad=='nije_selektovano'){

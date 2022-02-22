@@ -7,6 +7,10 @@ require_once 'models/Opstina.php';
 require_once 'models/Mikrolokacija.php';
 require_once 'models/Ulica.php';
 class Administrator_controller {
+    /*
+     * Klasa Administrator_controller radi poslovnu logiku ako je korisnik ulogovan
+     * kao administrator
+     */
    public function __construct($akcija) {
        session_start();
        if($akcija=='greska'){
@@ -20,9 +24,15 @@ class Administrator_controller {
        
    }
     public function greska() {
+        /*
+         * Prikazuje stranicu greske
+         */
        require_once 'views/greska.php';   
    }
    public function index(){
+       /*
+        * Prikazuje glavnu stranicu adminisratora
+        */
        $korisnici=Korisnik_model::dohvati_korisnike_za_odobrenje();
        if(empty($korisnici))
            $status="Nema novih korisnika koji za odobrenje!";
@@ -33,11 +43,17 @@ class Administrator_controller {
        
    }
    public function logout() {
+       /*
+        * Izloguje odgovarajuceg korisnika i vraca ga na pocetnu stranicu kao gosta
+        */
         session_destroy();
         header("Location: ?controller=gost&akcija=index");
         
     }
     public function odbij() {
+        /*
+         * Menja status korisnika u odbijen u bazi podataka
+         */
      $korisnicko_ime=$_GET['korisnicko_ime'];
      $status=Korisnik_model::pormeni_status($korisnicko_ime,'odbijen');
      if(!$status)
@@ -45,6 +61,9 @@ class Administrator_controller {
      header("Location: ?controller=administrator&akcija=index");
     }
     public function odobri() {
+        /*
+         * Menja status korisnika u odobren u bazi podataka
+         */
      $korisnicko_ime=$_GET['korisnicko_ime'];
      $status=Korisnik_model::pormeni_status($korisnicko_ime,'odobren');
      if(!$status)
@@ -52,12 +71,17 @@ class Administrator_controller {
      header("Location: ?controller=administrator&akcija=index");
     }
     public function pretraga_korisnika($status=NULL,$greska=NULL) {
+        /*
+         * Prikazuje stranicu za pretagu i izmenu infomacija korisnika
+         * ak je kliknuto dugme_izmeni
+         */
         require_once 'views/sablon/header.php';
         require_once 'views/sablon/menu.php';
         if(isset($_POST['dugme_izbrisi'])){
             $this->izbrisi_korisnika($status,$greska);
         }
         if(isset($_POST['dugme_izmeni'])){
+        //$_POST['lozinka']=hash("sha256",$_POST['lozinka']);
             $this->izmeni_korisnika($status,$greska);
         }
         if(isset($_POST['dugme_pretraga'])){
@@ -71,7 +95,6 @@ class Administrator_controller {
                 require_once 'views/administrator_pretraga_view.php';
         }
         else{
-            echo $greska;
             require_once 'views/administrator_pretraga_view.php';
         }
         require_once 'views/sablon/footer.php';
@@ -79,6 +102,10 @@ class Administrator_controller {
         
     }
     public function izmeni_korisnika(&$status,&$greska){
+        /*
+         * Prosledjuje prikupljene ifnormacije iz post-a Nekretnina_model
+         */
+        $_POST['lozinka']=hash("sha256",$_POST['lozinka']);
         if($_POST['tip']=='oglasavac'){
             $status=Korisnik_model::izmeni_korisnika($_POST['staro_korisnicko_ime'], $_POST['ime'],
                     $_POST['prezime'], $_POST['korisnicko_ime'], $_POST['lozinka'], $_POST['grad'],
@@ -97,6 +124,9 @@ class Administrator_controller {
     }
 
     public function izbrisi_korisnika(&$status,&$greska) {
+        /*
+         * Poziva funkciju izbrisi_korisnika iz klase Korisnik_model
+         */
        $status=Korisnik_model::izbrisi_korisnika($_POST['staro_korisnicko_ime']);
             if($status)
                 $status="Uspesno izbrisan korisnik!";
@@ -104,6 +134,9 @@ class Administrator_controller {
                 $greska="Neuspesno brisanje";
     }
     public function dodaj_korisnika($status=NULL,$greska=NULL) {
+        /*
+         * Prikazuje stranicu za ubacivanje novog korisnika
+         */
         $gradovi= Grad_model::dohvati_gradove();
         $agencije= Agencija_model::dohvati_agencije();
         require_once 'views/sablon/header.php';
@@ -112,9 +145,15 @@ class Administrator_controller {
         require_once 'views/sablon/footer.php';
     }
     public function registracija() {
+        /*
+         * Prosledjuje informacije prikupljenje iz posta za registraciju novog
+         * korisnika od strane admina i prosledjuje ih klasi Nekretnina_model
+         */
         $status=NULL;
         $greska=NULL;
         if(isset($_POST['dugme_registracija'])){
+            $_POST['lozinka1']=hash("sha256",$_POST['lozinka1']);
+            $_POST['lozinka2']=hash("sha256",$_POST['lozinka2']);
             if($_POST['tip']=='kupac')
                 $status=Korisnik_model::dodaj_korisnika($_POST['ime'],$_POST['prezime'],$_POST['korisnicko_ime'],$_POST['lozinka1'],$_POST['grad'],$_POST['rodjendan'],$_POST['telefon'],$_POST['email'],'kupac');
             else{
@@ -138,7 +177,15 @@ class Administrator_controller {
         }
     }
     public function promena_lozinke(){
+        /*
+         * Ako prikazuje stranicu za promenu lozinke, ako je kliknuto dugme
+         * promeni_lozinku komunicira sa klasom Nekretnina_model za izmenu lozinke
+         * ako je uspesno poziva se funkcija logout
+         */
+        
         if(isset($_POST['dugme_lozinka'])){
+            $_POST['lozinka1']=hash("sha256",$_POST['lozinka1']);
+            $_POST['stara_lozinka']=hash("sha256",$_POST['stara_lozinka']);
             $status=Korisnik_model::promeni_lozinku($_SESSION['korisnik']->korisnicko_ime, $_POST['stara_lozinka'], $_POST['lozinka1']);
             if($status!==true){
                 $greska=$status;
@@ -152,6 +199,10 @@ class Administrator_controller {
         require_once 'views/sablon/footer.php';
     }
     public function dodaj_agenciju() {
+        /*
+         * Prikazuje stranicu za dodavanje agencije i komunicira sa klasom Agencija_model
+         * 
+         */
         require_once 'views/sablon/header.php';
         require_once 'views/sablon/menu.php';
         $gradovi= Grad_model::dohvati_gradove();
@@ -172,6 +223,10 @@ class Administrator_controller {
         
     }
     public function dodaj_mesta() {
+        /*
+         * Prikazuje stranicu za ubacivanje i brisanje mikrolokacija i ulica i komunicira
+         * sa klasom Mikrolokacija_model i Ulica_model
+         */
         require_once 'views/sablon/header.php';
         require_once 'views/sablon/menu.php';
         if(isset($_POST['dugme_mikrolokacija_dodaj'])){

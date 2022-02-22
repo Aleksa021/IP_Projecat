@@ -1,5 +1,5 @@
 <form name='forma_registracija'method="post" action="<?php $_SERVER['PHP_SELF']?>?controller=<?php if(isset($_SESSION['korisnik'])) echo $_SESSION['korisnik']->tip;else echo 'gost'?>&akcija=registracija" onsubmit='return provera_registracije();'>
-    <table>
+    <table class="center">
         <tr>
             <td>
                 Ime

@@ -1,7 +1,7 @@
 <body>
     
     <form method="post" action="<?php echo '?controller='.$_SESSION['korisnik']->tip.'&akcija=promena_lozinke'?>" name='forma_promena_lozinke'onsubmit='return provera_promene_lozinke();'>
-        <table>
+        <table class="center">
             <tr>
                 <td>
                     Stara lozinka

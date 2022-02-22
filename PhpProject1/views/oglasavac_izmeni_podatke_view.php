@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title></title>
     </head>
     <body>
-        <table>
+        <table class="center">
         <form name="forma_izmeni_oglasavac" method="post" action="" onsubmit="return provera_izmene_oglasavac();">
             <tr>
                 <td>

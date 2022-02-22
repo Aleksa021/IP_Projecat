@@ -1,16 +1,10 @@
 <?php
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
-
-/**
- * Description of Mikrolokacija
- *
- * @author Jarvis
- */
 class Mikrolokacija_model{
+    /*
+     * Klasa Mikrolokacija_model povezuje se sa tabelom mikrolokacija iz baze
+     * podataka nekretnine
+     */
     private $id_mikrolokacija;
     private $id_opstina;
     private $naziv_m;
@@ -23,6 +17,10 @@ class Mikrolokacija_model{
         return $this->$ime_atributa;
  }
     public static function dohvati_mikrolokacije($naziv_opstine) {
+        /*
+         * Vraca niz objekata mikrolokacije sa ppunjenim vrednostima iz tabele
+         * mikrolokacija gde je naziv opstine kao prosledjen argument, u slucaju greske vraca false
+         */
         $konekcija=DB::dohvati_instancu();
         $id_opstina= Opstina_model::dohvati_id_opstine($naziv_opstine);
         $upit="SELECT * FROM mikrolokacija WHERE id_opstina=$id_opstina";
@@ -38,6 +36,10 @@ class Mikrolokacija_model{
             return $niz;
     }
     public static function dohvati_mikrolokaciju($naziv_grada,$naziv_opstine,$naziv_mikrolokacije) {
+        /*
+         * Vraca mikrolokaciju sa poznatom putanjom od naziva grada, opstine
+         * i same mikrolokacije, u slucaju greske vraca false
+         */
     $konekcija=DB::dohvati_instancu();
     $upit="SELECT * FROM grad, opstina, mikrolokacija WHERE naziv_g='$naziv_grada' and naziv_o='$naziv_opstine' and naziv_m='$naziv_mikrolokacije'";
     $rezultat=$konekcija->query($upit);
@@ -51,6 +53,10 @@ class Mikrolokacija_model{
     }
     
     public static function dohvati_id_mikrolokacije($naziv_grada,$naziv_opstine,$naziv_mikrolokacije){
+        /*
+         * Vraca id mikrolokacije sa poznatom putanjom od naziva grada, opstine
+         * i same mikrolokacije, u slucaju greske vraca false
+         */
         $konekcija=DB::dohvati_instancu();
         $upit="SELECT id_mikrolokacija FROM grad,opstina,mikrolokacija WHERE naziv_g='$naziv_grada'and naziv_o='$naziv_opstine' and naziv_m='$naziv_mikrolokacije'";
         $rezultat=$konekcija->query($upit);
@@ -71,6 +77,10 @@ class Mikrolokacija_model{
             return false;
     }*/
     public static function dodaj_mikrolokaciju($naziv_grada,$naziv_opstine,$naziv_mikrolokacije) {
+        /*
+         * Ubacuje nov red u tabelu mikrolokacija sa proslejdneim nazivima 
+         *, u slucaju greske vraca false
+         */
         $id= Opstina_model::dohvati_id_opstine($naziv_grada, $naziv_opstine);
         if($id!==false){
             $konekcija=DB::dohvati_instancu();
@@ -83,15 +93,43 @@ class Mikrolokacija_model{
         
     }
     public static function izbrisi_mikrolokaciju($naziv_grada,$naziv_opstine,$naziv_mikrolokacije) {
-        $id= Opstina_model::dohvati_id_opstine($naziv_grada, $naziv_opstine);
-        if($id!==false){
+        /*
+         * Brise red iz tabele mikrolokacija gde je putanja vezana za mikrolokaciju
+         * sa nazivom grada, opstine i same mikrolokacije, u slucaju greske vraca false
+         */
+        $id_opstina= Opstina_model::dohvati_id_opstine($naziv_grada, $naziv_opstine);
+        $id_mikrolokacija= Mikrolokacija_model::dohvati_id_mikrolokacije($naziv_grada, $naziv_opstine,$naziv_mikrolokacije);
+        if($id_opstina!==false && $id_mikrolokacija!==false){
             $konekcija=DB::dohvati_instancu();
-            $upit="DELETE FROM mikrolokacija WHERE id_opstina=$id and naziv_m='$naziv_mikrolokacije'";
+            $upit="SELECT id_nekretnina FROM nekretnina WHERE id_mikrolokacija=$id_mikrolokacija";
+            $rezultat=$konekcija->query($upit);
+            if($rezultat->rowCount()>0){
+                echo 'Postoje nekretnine na mikrolokaciji';
+                return false;
+            }
+            $upit="DELETE FROM mikrolokacija WHERE id_opstina=$id_opstina and naziv_m='$naziv_mikrolokacije'";
             $status=$konekcija->query($upit);
             return $status->rowCount()>0;
         }
         else
             return false;
         
+    }
+    public static function dohvati_sve_nazive($id_grada,$id_opstina,$id_mikrolokacija){
+        /*
+         * Vraca niz naziva grada, opstine, mikrolokacije koji su vezani za
+         * prosledjene id-jeve, u slucaju greske vraca false
+         */
+        $konekcija=DB::dohvati_instancu();
+        $upit="SELECT grad.naziv_g,opstina.naziv_o,mikrolokacija.naziv_m FROM grad,opstina,mikrolokacija WHERE "
+                . "grad.id_grad='$id_grada' and opstina.id_opstina='$id_opstina' and "
+                . "mikrolokacija.id_mikrolokacija='$id_mikrolokacija'";
+        $rezulta=$konekcija->query($upit);
+        if($rezulta->rowCount()>0){
+            $red=$rezulta->fetch();
+            return array($red[0],$red[1],$red[2]);
+        }
+        else
+            return false;
     }
 }

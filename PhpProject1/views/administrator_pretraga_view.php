@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <form method='post' action=''>
-            <table>
+            <table class="center">
                 <tr>
                     <td>
                         Korisnicko ime

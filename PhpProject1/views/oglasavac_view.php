@@ -9,8 +9,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title></title>
     </head>
     <body>
-        <h1>OVO VIDI OGLASIVAC</h1>
-        <table>
+        <?php if(!empty($nekretnine)):?>
+        <table class="center">
             <tr>
                 <th>
                 Naziv
@@ -30,7 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <input type="hidden" name='id_nekretnina'value="<?php echo $nekretnina->id_nekretnina ?>">
                 </td>
                 <td>
-                    <?php echo $nekretnina->cena?>
+                    <?php echo number_format($nekretnina->cena,2)?>
                 </td>
                 <?php if ($nekretnina->prodato):?>
                 <td>Prodato</td>
@@ -50,6 +50,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             }
             ?>
         </table>
+        <?php endif?> 
+        <?php if(empty($nekretnine)):?>
+        <h2>
+            Nemate nijedan oglas
+        </h2>
+        <?php endif?>
         <?php
         // put your code here
         ?>

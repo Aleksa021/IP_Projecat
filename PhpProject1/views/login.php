@@ -1,5 +1,5 @@
-<form name='forma_login' method='post' action=<?php echo $_SERVER['PHP_SELF'];?>?controller=gost&akcija=login>
-    <table>
+<form name='forma_login' method='post' action=<?php echo $_SERVER['PHP_SELF'];?>?controller=gost&akcija=login onsubmit="return provera_login()">
+    <table class="center">
         <tr>
             <td>
                 Korisnicko ime:

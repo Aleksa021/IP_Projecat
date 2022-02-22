@@ -21,8 +21,8 @@ function call($controller,$akcija){
 }
 
 $controllers= array('gost'=>['index','login','registracija'],
-    'kupac'=>['index','logout','promena_lozinke'],
-    'oglasavac'=>['index','logout','promena_lozinke','dodaj_nekretninu','izmeni_podatke','logout'],
+    'kupac'=>['index','logout','promena_lozinke','pretraga','pregled_nekretnine','napredna_pretraga','omiljeni'],
+    'oglasavac'=>['index','logout','promena_lozinke','dodaj_nekretninu','izmeni_podatke','logout','izmeni_nekretninu'],
     'administrator'=>['index','logout','promena_lozinke','odbij','odobri','pretraga_korisnika','dodaj_korisnika','registracija','promena_lozinke','dodaj_agenciju','dodaj_mesta']);
 if (array_key_exists($controller, $controllers)){
     if(in_array($akcija, $controllers[$controller])){

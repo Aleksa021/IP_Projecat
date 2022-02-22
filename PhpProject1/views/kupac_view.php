@@ -4,8 +4,8 @@
         <title></title>
     </head>
     <body>
-        <h1>OVO VIDI KUPAC</h1>
-        <table>
+        <table class="center">
+            <form method='post' name="forma_pretraga"action="" onsubmit="return provera_pretrage();">
             <tr>
                 <td>
                     Tip
@@ -29,7 +29,14 @@
                     Grad
                 </td>
                 <td>
-                    <input type='text' name='grad'>
+                    <select name='grad' id="grad">
+                        <option value = 'nije_selektovano'>---</option>
+                        <?php
+                            foreach($gradovi as $grad){
+                                    echo"<option value = '$grad->naziv_g'>$grad->naziv_g</option>";
+                            }
+                        ?>
+            </select>
                 </td>
             </tr>
             <tr>
@@ -50,7 +57,7 @@
             </tr>
             <tr>
                 <td>
-                    Maksimalna Cena
+                    Maksimalna cena
                 </td>
                 <td>
                     <input type='text' name='cena'>
@@ -64,7 +71,7 @@
                     <input type='text' name='kvadratura'>
                 </td>
             </tr>
-                        <tr>
+            <tr>
                 <td>
                     Minimalna broj soba
                 </td>
@@ -72,7 +79,15 @@
                     <input type='text' name='soba'>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <input type='submit' name='dugme_pretraga' value='Pretrazi'>
+                </td>
+            </tr>
+            </form>
         </table>
+        <font color='red'><?php if(isset($greska))echo $greska;?></font>
+        <font color='green'><?php if(isset($status))echo $status;?></font>
         <?php
         // put your code here
         ?>

@@ -174,7 +174,7 @@ function provera_izmene_korisnika(){
     var korisnicko_ime = document.forma_izmeni.korisnicko_ime.value;
     var kor_reg=/^[A-Za-z0-9_]{6,}$/;
     var lozinka = document.forma_izmeni.lozinka.value;
-    var loz_reg=/^(?(=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,})|()$/;
+    var loz_reg=/^((?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,})|()$/;
     //var loz_reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])([A-Za-z]{1,})([A-Za-z\d@$!%*?&]{7,})$/;
     var grad= document.getElementById("grad").value;
     if(grad=='nije_selektovano'){
@@ -190,16 +190,12 @@ function provera_izmene_korisnika(){
     }
     var email=document.forma_izmeni.email.value;
     var email_reg=/^[a-zA-Z\d]{2,}@([a-zA-Z\d]{1,}\.){1,}[a-z]{2,3}$/; 
-    if(ime=="" || prezime=="" || korisnicko_ime=="" || lozinka==""||email==""){
+    if(ime=="" || prezime=="" || korisnicko_ime=="" ||email==""){
         alert("Nisu popunjena sva polja");
         return false;
     }
     if(!tekst_reg.test(ime)||!tekst_reg.test(prezime)){
         alert('Nevalidno ime ili prezime');
-        return false;
-    }
-    if (!kor_reg.test(korisnicko_ime)){
-        alert('Lose uneta sifra!');
         return false;
     }
     
